@@ -8,12 +8,16 @@ var environments = {};
 
 // staging environments
 environments.staging = {
+	httpPort: 3000,
+	httpsPort: 3001,
 	port: 3000,
 	envName: 'staging',
 };
 
 // production environments
 environments.production = {
+	httpPort: 3000,
+	httpsPort: 3001,
 	port: 5000,
 	envName: 'production',
 };
