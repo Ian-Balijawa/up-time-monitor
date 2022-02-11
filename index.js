@@ -4,23 +4,14 @@
  */
 
 // Dependecies
-
 var http = require('http');
 var https = require('https');
 var url = require('url');
 var { StringDecoder } = require('string_decoder');
-var config = require('./config');
+var config = require('./lib/config');
 var fs = require('fs');
-var _data = require('./lib/data');
-
-/**
- * TESTINg
- * @TODO delete this
- *
- */
-_data.delete('test', 'newFile', function (err) {
-	console.log('This was the error: ', err);
-});
+var handlers = require('./lib/handlers');
+var helpers = require('./lib/helpers');
 
 //the server should respond to all requests with a string
 var httpServer = http.createServer(function (req, res) {
@@ -87,7 +78,8 @@ var unifiedServer = function (req, res) {
 			queryStringObject,
 			method,
 			headers,
-			payload: buffer,
+			payload: helpers.parseJSONToObject(buffer),
+			res,
 		};
 
 		// Router the reqeust to the handler specified in the router
@@ -111,19 +103,9 @@ var unifiedServer = function (req, res) {
 		});
 	});
 };
-// Define the handlers
-var handlers = {};
-
-// Define a ping handler
-handlers.ping = function (data, callback) {
-	callback(200);
-};
-// not Found handler
-handlers.notFound = function (data, callback) {
-	callback(404);
-};
 
 // Define a request router
 var router = {
 	ping: handlers.ping,
+	users: handlers.users,
 };
