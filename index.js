@@ -7,9 +7,9 @@
 var http = require('http');
 var https = require('https');
 var url = require('url');
+var fs = require('fs');
 var { StringDecoder } = require('string_decoder');
 var config = require('./lib/config');
-var fs = require('fs');
 var handlers = require('./lib/handlers');
 var helpers = require('./lib/helpers');
 
@@ -50,14 +50,15 @@ var unifiedServer = function (req, res) {
 	// Get the query string as an object
 	var queryStringObject = parsedUrl.query;
 
-	// get the http method
+	// get the HTTP method
 	var method = req.method;
 
 	// Get the HTTP headers
 	var headers = req.headers;
 
-	// Get the payload as an object
-	// This payload comes in as a stream
+	// Get the payload as an object. This payload comes in as a stream, so we should get it a
+	// in bits by bits ans soter them in a buffer until completion
+
 	var decoder = new StringDecoder('utf-8');
 	var buffer = '';
 	req.on('data', function (data) {
@@ -108,4 +109,5 @@ var unifiedServer = function (req, res) {
 var router = {
 	ping: handlers.ping,
 	users: handlers.users,
+	tokens: handlers.tokens,
 };
