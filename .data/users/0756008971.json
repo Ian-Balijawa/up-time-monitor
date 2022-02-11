@@ -1,1 +1,7 @@
-{"firstName":"ian","lastName":"Balijawa","hashedPassword":"7933e2c8a4fb418cf09419fb52bde9d4a30b3e06fc98b6d2f5766bc382076520","phone":"0756008971","tosAgreement":true}
+{
+    "firstName": "ian",
+    "lastName": "Balijawa",
+    "hashedPassword": "7933e2c8a4fb418cf09419fb52bde9d4a30b3e06fc98b6d2f5766bc382076520",
+    "phone": "0756008971",
+    "tosAgreement": true
+}

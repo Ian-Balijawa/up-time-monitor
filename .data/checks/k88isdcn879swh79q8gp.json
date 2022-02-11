@@ -1,0 +1,12 @@
+{
+    "id": "k88isdcn879swh79q8gp",
+    "userPhone": "0756008988",
+    "protocol": "https",
+    "method": "POST",
+    "successCodes": [
+        200,
+        2001
+    ],
+    "url": "google.com",
+    "timeoutSeconds": 3
+}
