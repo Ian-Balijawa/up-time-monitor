@@ -13,6 +13,13 @@ var config = require('./lib/config');
 var handlers = require('./lib/handlers');
 var helpers = require('./lib/helpers');
 
+/**
+ * @TODO get rid of this
+ */
+helpers.sendTwilioSms('787444814', 'Did this just work', function (err) {
+	console.log(err);
+});
+
 //the server should respond to all requests with a string
 var httpServer = http.createServer(function (req, res) {
 	unifiedServer(req, res);
@@ -83,7 +90,7 @@ var unifiedServer = function (req, res) {
 			res,
 		};
 
-		// Router the reqeust to the handler specified in the router
+		// Route the reqeust to the handler specified in the router
 		choosenHandler(data, function (statuscode, payload) {
 			// Use the statuscode called back by the handler or default to 200
 			statuscode = typeof statuscode === 'number' ? statuscode : 200;
